@@ -21,9 +21,10 @@ function MenuNavigation() {
             title: 'Dashboard',
             icon: <Dashboard />,
             hasMenu: true,
+            soon: true,
             subLinks: [
-                { link: 'eCommerce', path: './eCommerce' },
-                { link: 'Analytics', path: './Analytics' }
+                { link: 'eCommerce', path: './eCommerce', soon: true },
+                { link: 'Analytics', path: './Analytics', soon: true }
             ]
         },
         {
@@ -31,6 +32,7 @@ function MenuNavigation() {
             title: 'Calendar',
             icon: <Calendar />,
             hasMenu: false,
+            soon: true,
         },
         {
             id: 'profile',
@@ -44,16 +46,16 @@ function MenuNavigation() {
             icon: <Task  />,
             hasMenu: true,
             subLinks: [
-                { link: 'List', path: './Task/List' },
+                { link: 'List', path: './Task/List', soon: true },
                 { link: 'Kanban', path: './Task/Kanban' }
             ]
         },
     ];
 
     const supportLinks: MenuNavigationElement[] = [
-        { id: 'messages', title: 'Messages', icon: <Messager />, hasMenu: false },
-        { id: 'inbox', title: 'Inbox', icon: <Inbox />, hasMenu: false },
-        { id: 'invoice', title: 'Invoice', icon: <Invoice />, hasMenu: false },
+        { id: 'messages', title: 'Messages', icon: <Messager />, hasMenu: false, soon: true },
+        { id: 'inbox', title: 'Inbox', icon: <Inbox />, hasMenu: false, soon: true },
+        { id: 'invoice', title: 'Invoice', icon: <Invoice />, hasMenu: false, soon: true },
     ];
 
     const otherLinks = useMemo((): MenuNavigationElement[] => {
@@ -67,7 +69,7 @@ function MenuNavigation() {
                     subLinks: [
                         { link: 'Sign In', path: './signin' },
                         { link: 'Sign Up', path: './signup' },
-                        { link: 'Reset Password', path: './reset-password'},
+                        { link: 'Reset Password', path: './reset-password', soon: true},
                     ]
                 },
             ];
@@ -80,7 +82,7 @@ function MenuNavigation() {
                 hasMenu: true,
                 subLinks: [
                     { link: 'Log Out', path: './logout' },
-                    { link: 'Reset Password', path: './reset-password'}, 
+                    { link: 'Reset Password', path: './reset-password', soon: true }, 
                 ]
             },
         ];

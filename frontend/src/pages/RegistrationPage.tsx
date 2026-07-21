@@ -19,17 +19,15 @@ function RegistrationPage() {
                 const result = await registrationRequest(values.login, values.password, values.email);
                 if (result && result.status === 'error') {
                     setErrors({ login: result.message });
-                    console.log('Please fix the errors in the form');
                 } else if (result && result.status === 'success') {
-                    console.log('Registration success', result.token);
                     login(result.token, result.user);
                     navigate('/');
                 }
             } catch (serverError: unknown) {
                 if (serverError instanceof Error) {
-                    console.log(serverError.message);
+                    setErrors({ login: serverError.message }); 
                 } else {
-                    console.log('Something went wrong. Please try again.')
+                    setErrors({ login: 'Something went wrong. Please try again.' }); 
                 }
             } finally {
                 setBtnIsLoading(false);

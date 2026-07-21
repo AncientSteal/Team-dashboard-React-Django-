@@ -41,9 +41,7 @@ function ProfileEditModal({ isModalOpen, onClose }: ModalProps) {
                     const result = await updateProfileRequest(dataToSend, token);
                     if (result && result.status === 'error') {
                         setErrors({ login: result.message });
-                        console.log('Please fix the errors in the form');
                     } else if (result && result.status === 'success') {
-                        console.log('Profile updated', result.token);
                         updateContext(result.token, result.user);
                         onClose();
                     }

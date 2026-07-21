@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import type { MenuNavigationBtnProps } from "../../types/Navigation";
 import { ArrowIco } from "./Icons";
 import NavigationLinksList from "./NavigationLinksMenu";
+import { ComingSoonLabel } from "./ComingSoonLabel";
 
 function MenuNavigationBtn({ links, openMenus, toggleMenu }: MenuNavigationBtnProps) {
 
@@ -18,9 +19,15 @@ function MenuNavigationBtn({ links, openMenus, toggleMenu }: MenuNavigationBtnPr
                             to={path}
                             className="px-4 py-3 flex justify-between items-center"
                         >
-                            <div className="flex items-center gap-2.5">
+                            
+                            <div className="flex relative items-center gap-2.5">
                                 {link.icon}
                                 <p className="text-dark-200">{link.title}</p>
+                                {link.soon && (
+                                    <div className="absolute top-1 -right-4">
+                                        <ComingSoonLabel />
+                                    </div>
+                                )}
                             </div>
                         </Link>
                     </div>
@@ -34,8 +41,9 @@ function MenuNavigationBtn({ links, openMenus, toggleMenu }: MenuNavigationBtnPr
                         >
                             <div className="flex items-center gap-2.5">
                                 {link.icon}
-                                <p className="text-dark-200">{link.title}</p>
+                                <p className="text-dark-200">{link.title} </p>
                             </div>
+                            
 
                             { link.hasMenu && (
                                 <div className={`transform transition-transform ${ isActive ? 'rotate-180' : ''}`}>
@@ -55,6 +63,7 @@ function MenuNavigationBtn({ links, openMenus, toggleMenu }: MenuNavigationBtnPr
                                         links={link.subLinks}
                                         active={true}
                                     />
+                                    {link.soon && (<ComingSoonLabel />)}
                                 </div>
                             </div>
                         )}

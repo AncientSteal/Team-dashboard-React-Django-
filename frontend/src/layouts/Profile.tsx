@@ -44,9 +44,6 @@ function ProfilePage() {
                             {user?.bio || 'No bio provided yet. Click "Edit Profile" to add some information about yourself!'}
                         </p>
                     </div>
-                    <div>
-                        <p className="text-dark-700">Follow me on</p>
-                    </div>
                 </div>
             </div>
             <ProfileEditModal 
@@ -58,18 +55,3 @@ function ProfilePage() {
 }
 
 export default ProfilePage;
-
-/* <div className="flex border text-dark-700 text-base">
-    <div className="flex gap-1 px-4 py-2 border-r items-center">
-        <p>259</p>
-        <span className="text-gray-300 text-sm">Posts</span>
-    </div>
-    <div className="flex gap-1 px-4 py-2 border-r items-center">
-        <p>129K</p>
-        <span className="text-gray-300 text-sm">Followers</span>
-    </div>
-    <div className="flex gap-1 px-4 py-2 items-center">
-        <p>2K</p>
-        <span className="text-gray-300 text-sm">Followers</span>
-    </div>
-</div> элемент с данными пользователя находится в разработке*/

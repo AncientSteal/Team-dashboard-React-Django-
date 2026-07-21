@@ -1,4 +1,3 @@
-import { ArrowIco } from "./Icons";
 import { useAuth } from "../../hooks/useAuth";
 import { getAvatarUrl } from "../../utils/getAvatarUrl";
 
@@ -13,9 +12,7 @@ export function UserInfo() {
             <div className="w-11.5 h-11.5 ml-3">
                 <img className="object-cover w-full h-full rounded-full" src={getAvatarUrl(user?.avatar_url)} alt="UserAvatar" />
             </div>
-            <button className="text-stroke-gray-300 h-full items-center">
-                <ArrowIco />
-            </button>
+           
         </div>
     )
 }

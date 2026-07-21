@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 export interface NavigationLink {
     link: string;
     path: string;
+    soon?: boolean;
 }
 
 export interface NavigationLinkProps {
@@ -16,6 +17,7 @@ export interface MenuNavigationElement {
     hasMenu: boolean;
     icon: ReactNode;
     subLinks?: NavigationLink[];
+    soon?: boolean;
 }
 
 export interface MenuNavigationBtnProps {

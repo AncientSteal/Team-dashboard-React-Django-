@@ -58,15 +58,17 @@ function Tasks() {
         fetchTasks();    
     }, [token]);
 
-    if (isLoading) return
+    if (isLoading) return (
         <div className="mx-auto mt-20">
             <ButtonSpin />
         </div>
+    )
 
-    if (error) return 
+    if (error) return (
         <div className="mx-auto text-center mt-20 text-red-500">
             {error}
         </div>
+    )
 
     const todoTasks = tasks.filter(task => task.status === 'todo');
     const inProgressTasks = tasks.filter(task => task.status === 'in_progress');
@@ -105,7 +107,7 @@ function Tasks() {
                         {inProgressTasks.map(task => (
                             <KanbanCard key={task.id} {...task} onEditClick={(task) => setEditingTask(task)} />
                         ))}
-                        {todoTasks.length === 0 && <p className="text-gray-400 text-xs text-center my-4">No tasks</p>}
+                        {inProgressTasks.length === 0 && <p className="text-gray-400 text-xs text-center my-4">No tasks</p>}
                     </div>
                 </div>
                 <div className="bg-gray-200 p-4 flex flex-col gap-4 overflow-y-auto scrollbar-none">
@@ -117,7 +119,7 @@ function Tasks() {
                         {doneTasks.map(task => (
                             <KanbanCard key={task.id} {...task} onEditClick={(task) => setEditingTask(task)} />
                         ))}
-                        {todoTasks.length === 0 && <p className="text-gray-400 text-xs text-center my-4">No tasks</p>}
+                        {doneTasks.length === 0 && <p className="text-gray-400 text-xs text-center my-4">No tasks</p>}
                     </div>
                 </div>
             </div>

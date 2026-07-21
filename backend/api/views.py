@@ -22,21 +22,12 @@ SECRET_KEY = settings.SECRET_KEY
 
 # Create your views here.
 @csrf_exempt
+@jwt_required
 def get_tasks(request):
     if request.method != 'GET':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
 
-    auth_header = request.headers.get('Authorization')
-    if not auth_header or not auth_header.startswith('Bearer'):
-        return JsonResponse({'error': 'Invalid authorization header'}, status=401)
-
-    try:
-        token = auth_header.split(' ')[1]
-        payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
-        user_id = payload['user_id']
-        user = User.objects.get(id=user_id)
-    except (jwt.ExpiredSignatureError, jwt.InvalidTokenError, User.DoesNotExist):
-        return JsonResponse({'error': 'Unauthorized: Invalid token'}, status=401)
+    user = request.user
 
     tasks = Task.objects.filter(assigned_to=user).select_related('assigned_to')
     task_list = []
@@ -167,20 +158,12 @@ def registration_user(request):
         return JsonResponse({'error': f'Registration error: {str(e)}'}, status=500)
 
 @csrf_exempt
+@jwt_required
 def update_profile(request):
     if request.method != 'PUT':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
-    auth_header = request.headers.get('Authorization')
-    if not auth_header or not auth_header.startswith('Bearer'):
-        return JsonResponse({'error': 'Invalid authorization header'}, status=401)
 
-    try:
-        token = auth_header.split(' ')[1]
-        payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
-        user_id = payload['user_id']
-        user = User.objects.get(id=user_id)
-    except (jwt.ExpiredSignatureError, jwt.InvalidTokenError, User.DoesNotExist):
-        return JsonResponse({'error': 'Unauthorized: Invalid token'}, status=401)
+    user = request.user
 
     try:
         if request.META.get('CONTENT_TYPE', '').startswith('multipart/form-data'):
@@ -225,12 +208,7 @@ def update_profile(request):
         }, status=200)
 
     except Exception as e:
-        import traceback
-        print(traceback.format_exc())
-        return JsonResponse({
-            'error': f'Server error during update: {str(e)}',
-            'traceback': traceback.format_exc()  # <-- Вы увидите точную строку падения
-        }, status=500)
+        return JsonResponse({'error': f'Server error during update: {str(e)}'}, status=500)
 
 @csrf_exempt
 @jwt_required
