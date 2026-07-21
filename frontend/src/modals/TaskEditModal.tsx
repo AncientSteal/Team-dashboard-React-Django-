@@ -38,7 +38,7 @@ function TaskEditModal({ onClose, task, isModalOpen, onTaskUpdated, onTaskDelete
                     onTaskUpdated(result.task);
                     onClose();
                 }
-            } catch (err) {
+            } catch {
                 setErrors({ task_title: 'Something went wrong' })
             } finally {
                 setBtnIsLoading(false);
