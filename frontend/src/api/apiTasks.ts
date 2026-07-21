@@ -1,5 +1,6 @@
 import { API_BASE_URL } from "../config";
 import type { ServerErrorResponse, ServerSuccessTaskResponse } from "../types/Api";
+import type { Task } from "../types/Tasks";
 
 export const tasksRequest = async (token: string): Promise<ServerErrorResponse | ServerSuccessTaskResponse> => {
 
@@ -28,7 +29,7 @@ export const tasksRequest = async (token: string): Promise<ServerErrorResponse |
         const result = await response.json();
         const successResponse: ServerSuccessTaskResponse = {
             status: 'success',
-            tasks: result.tasks.map((task: any) => ({
+            tasks: result.tasks.map((task: Task) => ({
                 id: task.id,
                 title: task.title,
                 description: task.description,

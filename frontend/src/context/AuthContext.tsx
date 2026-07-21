@@ -12,6 +12,20 @@ export const AuthProvider = ({ children }: { children: ReactNode}) => {
     });
     const [isLoading, setIsLoading] = useState(true);
 
+    const login = (newToken: string, newUser: User) => {
+        setToken(newToken);
+        setUser(newUser);
+        localStorage.setItem('user_token', newToken);
+        localStorage.setItem('user_info', JSON.stringify(newUser));
+    }
+
+    const logout = () => {
+        setToken(null);
+        setUser(null);
+        localStorage.removeItem('user_token');
+        localStorage.removeItem('user_info');
+    };
+
     useEffect(() => {
         const verifyToken = async () => {
             if (!token) {
@@ -43,20 +57,6 @@ export const AuthProvider = ({ children }: { children: ReactNode}) => {
         verifyToken();
 
     }, [token]);
-
-    const login = (newToken: string, newUser: User) => {
-        setToken(newToken);
-        setUser(newUser);
-        localStorage.setItem('user_token', newToken);
-        localStorage.setItem('user_info', JSON.stringify(newUser));
-    }
-
-    const logout = () => {
-        setToken(null);
-        setUser(null);
-        localStorage.removeItem('user_token');
-        localStorage.removeItem('user_info');
-    };
 
     return (
         <AuthContext.Provider value={{user, token, isLoading, login, logout }}>

@@ -1,5 +1,5 @@
 import { useAuth } from "../../hooks/useAuth";
-import type { MenuNavigationBtnProps, MenuNavigationElement } from "../../types/Navigation";
+import type { MenuNavigationElement } from "../../types/Navigation";
 import { Authentication, Calendar, Dashboard, Inbox, Invoice, Messager, Profile, Task } from "./Icons";
 import MenuNavigationBtn from "./MenuNavigationBtn";
 import { useMemo, useState } from "react";

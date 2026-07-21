@@ -27,7 +27,7 @@ function TaskCreateModal({ onClose, isModalOpen, onTaskCreated }: TaskModalProps
                     onTaskCreated(result.task);
                     onClose();
                 }
-            } catch (err) {
+            } catch {
                 setErrors({ task_title: 'Something went wrong' })
             } finally {
                 setBtnIsLoading(false);

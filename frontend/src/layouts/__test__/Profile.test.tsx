@@ -39,7 +39,13 @@ describe("Тестирование компонента ProfilePage", () => {
     });
 
     test("Должен отображать дефолтные значения (заглушки), если у пользователя нет данных", () => {
-        useAuthMock.mockReturnValue({ user: null } as Partial<ReturnType<typeof useAuth>> as any);
+        useAuthMock.mockReturnValue({ 
+            user: null,
+            token: null,
+            login: () =>({}),
+            logout: () =>({}),
+            isLoading: false,
+        });
         render(<ProfilePage />);
 
         expect(screen.getByText("Guest")).toBeInTheDocument();

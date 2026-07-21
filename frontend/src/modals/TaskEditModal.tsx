@@ -66,7 +66,7 @@ function TaskEditModal({ onClose, task, isModalOpen, onTaskUpdated, onTaskDelete
                 onTaskDeleted(task.id);
                 onClose();
             }
-        } catch (err) {
+        } catch {
             setErrors({ task_title: 'Failed to delete the task' })
         } finally {
             setBtnIsLoading(false);

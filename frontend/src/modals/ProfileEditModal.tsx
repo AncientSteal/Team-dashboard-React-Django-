@@ -49,9 +49,9 @@ function ProfileEditModal({ isModalOpen, onClose }: ModalProps) {
                     }
                 } catch (serverError: unknown) {
                     if (serverError instanceof Error) {
-                        console.log(serverError.message);
+                        setErrors({ login: 'Failed to edit profile.' })
                     } else {
-                        console.log('Something went wrong. Please try again.')
+                        setErrors({ login: 'Something went wrong. Please try again.' })
                     }
                 } finally {
                     setBtnIsLoading(false);

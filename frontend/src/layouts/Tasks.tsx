@@ -23,7 +23,7 @@ function Tasks() {
         setTasks(prev => prev.map(task => task.id === updatedTask.id ? updatedTask : task))
     }
 
-    const handleTaskCreated = (newTask: any) => {
+    const handleTaskCreated = (newTask: Task) => {
         if (!newTask) {
             return;
         }
@@ -47,7 +47,7 @@ function Tasks() {
                 } else {
                     setError(result.message);
                 }
-            } catch (err) {
+            } catch {
                 setError("Failed to load tasks");
             }
             finally {
