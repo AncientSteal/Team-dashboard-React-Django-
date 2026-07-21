@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@layer base {
+    body {
+        @apply bg-base-gray transition-colors duration-300 ease-in-out;
+    }
+
+    button {
+        @apply p-2.5 text-base text-center flex justify-center rounded-lg font-semibold h-fit hover:scale-105 cursor-pointer transform transition-all duration-300 ease-in-out will-change-transform focus:outline-none;
+    }
+
+    a {
+        @apply cursor-pointer transform transition-[text] duration-300 ease-in-out;
+    }
+
+    input {
+        @apply px-4 py-3 rounded-lg text-base font-normal focus:shadow-input focus:outline-none transition-all duration-200 ease-in-out placeholder:text-dark-text-300 border border-gray-300;
+    }
+
+    select {
+        @apply px-4 py-3 rounded-lg text-base font-normal focus:shadow-input focus:outline-none transition-all duration-200 ease-in-out placeholder:text-dark-text-300 border border-gray-300;
+    }
+}
+
+@theme {
+    --color-base-gray: #EFF4FB;
+    --color-base-white: #fff;
+    --color-header-white: #fff;
+    --color-brand-50: #97bcf3;
+    --color-brand-100: #3a5e94;
+    --color-brand-200: #0d3b7c;
+    --color-brand-300: #10264b;
+    --color-brand-700: #6941C6;
+    --color-brand-900: #42307D;
+    --color-dark-800: #1C2434;
+    --color-dark-700: #1C2434;
+    --color-dark-300: #637381;
+    --color-dark-200: #DEE4EE;
+    --color-dark-100: #eef3fa;
+    --color-dark-text-300: #8A99AF;
+    --color-dark-text-700: #1c1f24;
+    --color-title-dark: #1C2434;
+    --color-stroke-gray-300: #d7dbe2;
+    --color-stroke-gray-200: #E2E8F0;
+    --color-gray-100: #EFF4FB;
+    --color-gray-200: #E2E8F0;
+    --color-gray-300: #969AA1;
+    --color-gray-150: #c9ced6;
+    --color-link-gray-300: #969AA1;
+    --color-deadline-red: #fc97ac;
+    --color-update-purple: #cbaefa;
+    --color-created-cyan: #aee3fc;
+    --shadow-input: 0 0 10px var(--color-dark-text-300);
+    --transition-property-card: translate, box-shadow;
+}
+
+    
+html.dark {
+    --color-base-gray: rgb(10, 18, 34);
+    --color-header-white: #252f46;
+    --color-stroke-gray-300: #9bafce;
+    --color-title-dark: #f3f6fc;
+    --color-card-white: #302f46;
+    --color-gray-100: #9bafce;
+    --color-gray-150: #374b6b;
+    --color-gray-200: #445f83;
+    --color-gray-300: #233a61;
+    --color-dark-100: #03245a;
+    --color-dark-300: #78838b;
+    --color-dark-700: #d7deee;
+    --color-dark-800: #1C2434;
+    --color-brand-50: #739edf;
+    --color-brand-100: #9bafce;
+    --color-brand-200: #3174ca;
+    --color-brand-300: #233a61;
+    --color-brand-700: #9e77ed;     
+    --color-brand-900: #d6bbfb;
+    --color-neutral-300: #7d8faf;
+    --shadow-input: 0 0 10px var(--color-brand-700);
+}
