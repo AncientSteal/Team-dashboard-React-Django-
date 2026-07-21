@@ -7,12 +7,17 @@ export function useForm<T extends Record<string, string>>({initialValues, valida
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [buttonIsLoading, setBtnIsLoading] = useState(false);
 
-    const initialValuesStr = JSON.stringify(initialValues);
+    const [prevInitialValues, setPrevInitialValues] = useState<T>(initialValues);
 
-    useEffect(() => {
-        setFormData(JSON.parse(initialValuesStr));
+    const isChanged = Object.keys(initialValues).some(
+        key => initialValues[key] !== prevInitialValues[key]
+    );
+
+    if (isChanged) {
+        setFormData(initialValues);
         setErrors({});
-    }, [initialValuesStr]);
+        setPrevInitialValues(initialValues);
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const {name, value} = e.target;
