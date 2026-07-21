@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { UseFormOptions } from "../types/Form";
 
 export function useForm<T extends Record<string, string>>({initialValues, validate, onSubmit}: UseFormOptions<T>) {
