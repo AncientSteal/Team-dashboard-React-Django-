@@ -1,0 +1,9 @@
+meta:
+  environment: docker
+  toolchain:
+    name: docker
+    version: latest
+build:
+  dockerfile: backend/Dockerfile
+run:
+  port: 8000
